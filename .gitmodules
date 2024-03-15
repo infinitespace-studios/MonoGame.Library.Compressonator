@@ -1,0 +1,6 @@
+[submodule "buildscripts"]
+	path = buildscripts
+	url = https://github.com/MonoGame/MonoGame.Library.BuildScripts.git
+[submodule "compressonator"]
+	path = compressonator
+	url = https://github.com/GPUOpen-Tools/compressonator.git
