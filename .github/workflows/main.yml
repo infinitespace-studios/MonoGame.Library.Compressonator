@@ -17,9 +17,6 @@ jobs:
       - name: Add msbuild to PATH
         if: runner.os == 'Windows'
         uses: microsoft/setup-msbuild@v1.0.2
-      - name: Sync external libs
-        working-directory: ${{github.workspace}}/compressonator/build
-        run: python fetch_dependencies.py
       - name: Install Linux dependencies
         if: runner.os == 'Linux'
         run: sudo apt-get install build-essential git make cmake autoconf automake pkg-config libxinerama-dev libxrandr-dev
@@ -28,6 +25,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
+      - name: Sync external libs
+        working-directory: ${{github.workspace}}/compressonator/build
+        run: python fetch_dependencies.py
       - name: Run CAKE
         run: dotnet run --project ./build/Build.csproj --universalBinary=true
         env:
